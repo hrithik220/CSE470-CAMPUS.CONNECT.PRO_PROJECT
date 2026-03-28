@@ -17,13 +17,14 @@
             <a href="{{ route('inbox') }}" class="hover:underline">Inbox</a>
             @auth
                 <span class="text-sm">Hello, {{ Auth::user()->name }}</span>
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="/logout">
                     @csrf
                     <button class="bg-white text-blue-700 px-3 py-1 rounded text-sm font-semibold">Logout</button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="hover:underline">Login</a>
-                <a href="{{ route('register') }}" class="bg-white text-blue-700 px-3 py-1 rounded text-sm font-semibold">Register</a>
+                <a href="/login"
+                 class="hover:underline">Login</a>
+                <a href="/register" class="bg-white text-blue-700 px-3 py-1 rounded text-sm font-semibold">Register</a>
             @endauth
         </div>
     </nav>
