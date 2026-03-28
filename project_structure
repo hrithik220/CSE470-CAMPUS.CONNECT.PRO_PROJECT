@@ -1,0 +1,131 @@
+campus-connect-pro/
+│
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Auth/
+│   │   │   │   └── AuthController.php
+│   │   │   │
+│   │   │   ├── Hrithik/                  ← Marketplace
+│   │   │   │   ├── MarketplaceItemController.php
+│   │   │   │   ├── ChatMessageController.php
+│   │   │   │   ├── TransactionController.php
+│   │   │   │   └── ReviewController.php
+│   │   │   │
+│   │   │   ├── Ramisha/                  ← Karma & Sustainability
+│   │   │   │   ├── KarmaLogController.php
+│   │   │   │   ├── BadgeController.php
+│   │   │   │   ├── SustainabilityController.php
+│   │   │   │   └── FraudFlagController.php
+│   │   │   │
+│   │   │   ├── Nahid/                    ← Tutoring + Academic
+│   │   │   │   ├── TutorProfileController.php
+│   │   │   │   ├── TutoringSessionController.php
+│   │   │   │   ├── DoubtController.php
+│   │   │   │   ├── AnswerController.php
+│   │   │   │   └── DeadlineController.php
+│   │   │   │
+│   │   │   └── Pronoy/                   ← Ride Sharing
+│   │   │       ├── RideOfferController.php
+│   │   │       ├── RideRequestController.php
+│   │   │       └── RideHistoryController.php
+│   │   │
+│   │   └── Middleware/
+│   │       ├── Authenticate.php
+│   │       └── RoleMiddleware.php
+│   │
+│   └── Models/
+│       ├── User.php                      ← Shared
+│       ├── Notification.php              ← Shared
+│       │
+│       ├── MarketplaceItem.php           ← Hrithik
+│       ├── ChatMessage.php               ← Hrithik
+│       ├── Transaction.php               ← Hrithik
+│       ├── Review.php                    ← Hrithik
+│       │
+│       ├── KarmaLog.php                  ← Ramisha
+│       ├── Badge.php                     ← Ramisha
+│       ├── UserBadge.php                 ← Ramisha
+│       ├── SustainabilityLog.php         ← Ramisha
+│       ├── FraudFlag.php                 ← Ramisha
+│       │
+│       ├── TutorProfile.php              ← Nahid
+│       ├── TutoringSession.php           ← Nahid
+│       ├── Doubt.php                     ← Nahid
+│       ├── Answer.php                    ← Nahid
+│       ├── Deadline.php                  ← Nahid
+│       │
+│       ├── RideOffer.php                 ← Pronoy
+│       ├── RideRequest.php               ← Pronoy
+│       └── RideHistory.php               ← Pronoy
+│
+├── database/
+│   └── migrations/
+│       ├── 2024_01_01_000001_create_users_table.php
+│       ├── 2024_01_01_000002_create_notifications_table.php
+│       │
+│       ├── 2024_01_01_000003_create_marketplace_items_table.php
+│       ├── 2024_01_01_000004_create_chat_messages_table.php
+│       ├── 2024_01_01_000005_create_transactions_table.php
+│       ├── 2024_01_01_000006_create_reviews_table.php
+│       │
+│       ├── 2024_01_01_000007_create_karma_logs_table.php
+│       ├── 2024_01_01_000008_create_badges_table.php
+│       ├── 2024_01_01_000009_create_user_badges_table.php
+│       ├── 2024_01_01_000010_create_sustainability_logs_table.php
+│       ├── 2024_01_01_000011_create_fraud_flags_table.php
+│       │
+│       ├── 2024_01_01_000012_create_tutor_profiles_table.php
+│       ├── 2024_01_01_000013_create_tutoring_sessions_table.php
+│       ├── 2024_01_01_000014_create_doubts_table.php
+│       ├── 2024_01_01_000015_create_answers_table.php
+│       ├── 2024_01_01_000016_create_deadlines_table.php
+│       │
+│       ├── 2024_01_01_000017_create_ride_offers_table.php
+│       ├── 2024_01_01_000018_create_ride_requests_table.php
+│       └── 2024_01_01_000019_create_ride_histories_table.php
+│
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   ├── app.blade.php
+│       │   └── admin.blade.php
+│       │
+│       ├── auth/
+│       │   ├── login.blade.php
+│       │   └── register.blade.php
+│       │
+│       ├── marketplace/              ← Hrithik
+│       │   ├── index.blade.php
+│       │   ├── create.blade.php
+│       │   ├── show.blade.php
+│       │   ├── chat.blade.php
+│       │   └── review.blade.php
+│       │
+│       ├── karma/                    ← Ramisha
+│       │   ├── leaderboard.blade.php
+│       │   ├── badges.blade.php
+│       │   ├── sustainability.blade.php
+│       │   └── deadlines.blade.php
+│       │
+│       ├── tutoring/                 ← Nahid
+│       │   ├── index.blade.php
+│       │   ├── profile.blade.php
+│       │   ├── book.blade.php
+│       │   ├── session.blade.php
+│       │   └── doubt-forum.blade.php
+│       │
+│       └── rides/                    ← Pronoy
+│           ├── index.blade.php
+│           ├── create.blade.php
+│           ├── show.blade.php
+│           └── history.blade.php
+│
+├── routes/
+│   └── web.php
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── composer.json
+└── README.md
