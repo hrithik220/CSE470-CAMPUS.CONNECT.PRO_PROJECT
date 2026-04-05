@@ -15,28 +15,6 @@ APIs: Google Maps API, SMS API
 Auth: Laravel Authentication with Middleware Role Management
 Version Control: Git + GitHub
 
-campus-connect-pro/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── Hrithik/          ← Marketplace
-│   │   │   ├── Ramisha/          ← Karma & Sustainability
-│   │   │   ├── Nahid/            ← Tutoring + Academic
-│   │   │   └── Pronoy/           ← Ride Sharing
-│   │   └── Middleware/
-│   └── Models/
-├── database/
-│   └── migrations/
-├── resources/
-│   └── views/
-│       ├── layouts/
-│       ├── marketplace/          ← Hrithik
-│       ├── karma/                ← Ramisha
-│       ├── tutoring/             ← Nahid
-│       └── rides/                ← Pronoy
-├── routes/
-│   └── web.php
-└── README.md
 
 MVC Architecture
 This project strictly follows the MVC (Model-View-Controller) pattern:
