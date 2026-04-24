@@ -16,14 +16,6 @@
                     <img src="{{ Storage::url($item->photos[0]) }}"
                          alt="{{ $item->title }}"
                          class="w-full rounded-lg object-cover max-h-72">
-                    @if(count($item->photos) > 1)
-                        <div class="flex gap-2 mt-2 overflow-x-auto">
-                            @foreach(array_slice($item->photos, 1) as $photo)
-                                <img src="{{ Storage::url($photo) }}"
-                                     class="h-16 w-16 object-cover rounded cursor-pointer">
-                            @endforeach
-                        </div>
-                    @endif
                 @else
                     <div class="w-full h-60 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400">
                         No Photo Available
@@ -53,22 +45,42 @@
                     <p class="text-gray-600 text-sm leading-relaxed">{{ $item->description }}</p>
                 @endif
 
-                {{-- Seller Info --}}
-                <div class="border-t pt-3">
-                    <p class="text-sm text-gray-500">Sold by</p>
-                    <p class="font-semibold text-gray-800">{{ $item->seller->name }}</p>
-                    <p class="text-sm text-yellow-600">
-                        ⭐ Credibility: {{ number_format($item->seller->credibility_score, 1) }}
-                    </p>
+                {{-- Seller Info with Credibility (F3) --}}
+                <div class="border rounded-lg p-3 bg-gray-50">
+                    <p class="text-sm text-gray-500 mb-1">Sold by</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">{{ $item->seller->name }}</p>
+                            <div class="flex items-center gap-1">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <span class="text-sm {{ $i <= round(($item->seller->credibility_score / 10) * 5) ? 'text-yellow-400' : 'text-gray-300' }}">★</span>
+                                @endfor
+                                <span class="text-xs text-gray-500 ml-1">
+                                    Credibility: {{ number_format($item->seller->credibility_score, 1) }}/10
+                                </span>
+                            </div>
+                        </div>
+                        <a href="{{ route('marketplace.seller.profile', $item->seller_id) }}"
+                           class="text-blue-600 text-sm hover:underline">
+                            View Profile →
+                        </a>
+                    </div>
                 </div>
 
                 {{-- Action Buttons --}}
                 @auth
                     @if(Auth::id() !== $item->seller_id && $item->status === 'available')
                         <a href="{{ route('marketplace.chat', $item) }}"
-                           class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition mt-2">
+                           class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                             💬 Chat with Seller
                         </a>
+                        <form method="POST" action="{{ route('marketplace.buy', $item) }}">
+                            @csrf
+                            <button type="submit"
+                                    class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                                🛒 Request to Buy
+                            </button>
+                        </form>
                     @endif
 
                     @if(Auth::id() === $item->seller_id)
